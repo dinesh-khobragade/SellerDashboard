@@ -1,13 +1,15 @@
 <template>
-  <p>Product List Item Component</p>
+  <div>{{product.Name}}</div>
 </template>
 
 <script>
     export default {
-        name: "ProductListItem"
+      props:['product']
     }
 </script>
 
 <style scoped>
+div{
 
+}
 </style>

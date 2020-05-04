@@ -1,8 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+require("babel-polyfill");
 
 module.exports = {
-  entry: './src/main.js',
+  entry: ["babel-polyfill", "./src/main.js"],
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -41,6 +42,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      'vuejs-datatable': 'vuejs-datatable/dist/vuejs-datatable.esm.js',
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['*', '.js', '.vue', '.json']

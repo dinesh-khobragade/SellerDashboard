@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="container-fluid">
-      <div class="row">
-        <div class="col-1">
+  <div id="app" class="container-fluid h-100">
+      <div class="row  h-100">
+        <div class="col-1.5">
           <app-sidebar></app-sidebar>
         </div>
         <div class="col">
@@ -27,6 +27,8 @@
   #app {
 
   }
-
+  body, html {
+    height: 100%;
+  }
 
 </style>

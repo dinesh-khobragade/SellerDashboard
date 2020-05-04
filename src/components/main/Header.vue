@@ -1,5 +1,5 @@
 <template>
-  <h1>Header Component</h1>
+  <h1>Nearby Rush</h1>
 </template>
 
 <script>
@@ -9,5 +9,8 @@
 </script>
 
 <style scoped>
+h1{
+  margin: 60px;
+}
 
 </style>
