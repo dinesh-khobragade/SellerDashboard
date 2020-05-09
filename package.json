@@ -13,8 +13,7 @@
     "vue": "^2.5.11",
     "vue-csv-import": "^3.1.0",
     "vue-js-modal": "^2.0.0-rc.3",
-    "vue-router": "^3.1.6",
-    "vue-table-dynamic": "^0.2.1"
+    "vue-router": "^3.1.6"
   },
   "browserslist": [
     "> 1%",
@@ -32,13 +31,10 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
-    "laravel-vue-datatable": "^0.5.12",
     "papaparse": "^5.2.0",
-    "v-datatable-light": "^0.8.1",
     "vue-js-modal": "^2.0.0-rc.3",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
-    "vue-xls-csv-parser": "0.0.21",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   }

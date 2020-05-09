@@ -10,7 +10,7 @@
 
 <style scoped>
 h1{
-  margin: 60px;
+  margin: 30px;
 }
 
 </style>

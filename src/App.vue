@@ -1,10 +1,10 @@
 <template>
-  <div id="app" class="container-fluid h-100">
-      <div class="row  h-100">
-        <div class="col-1.5">
+  <div id="app" class="container-fluid">
+      <div class="row">
+        <div class="col-2">
           <app-sidebar></app-sidebar>
         </div>
-        <div class="col">
+        <div class="col-10">
           <app-content></app-content>
         </div>
       </div>
@@ -18,7 +18,7 @@
   export default {
     components: {
       appSidebar : Sidebar,
-      appContent : Content
+      appContent : Content,
     }
   }
 </script>
