@@ -1,18 +1,16 @@
 <template>
-  <div class="container-fluid" id="app">
+  <div class="container" id="app">
 
     <input v-if="productList.length>0" type="text" class="form-control" id="inlineFormInputName"
            placeholder="Search products by name , ID , Category, SKU" v-model="searchTerm">
 
     <table class="table" v-if="productList.length>0">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
+      <thead class="thead-light">
+      <tr align="center">
         <th scope="col">Product ID</th>
         <th scope="col">Category</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Image</th>
         <th scope="col">Price</th>
         <th scope="col">Discount</th>
         <th scope="col">SKU</th>
@@ -20,26 +18,25 @@
       </tr>
       </thead>
       <tbody v-for="(product, index) in filteredProducts">
-      <tr id="row-element" visible="false">
-        <th scope="row">{{index+1}}</th>
-        <th scope="row">{{product.id}}</th>
+      <tr align="center" id="row-element">
+        <th scope="row">#{{product.id}}</th>
         <td>{{product.categoryName}}</td>
         <td>{{product.productName}}</td>
         <td>{{product.description}}</td>
-        <td>{{product.imageUrl}}</td>
         <td>{{product.originalPrice}}</td>
         <td>{{product.discount}}</td>
         <td>{{product.sku}}</td>
-        <th scope="col">
-          <button type="button" class="btn btn-outline-primary" @click="showDetails(product)">Edit</button>
-        </th>
+        <td scope="row" id="edit" @click="showDetails(product)">
+<!--          <button type="button" class="btn btn-outline-primary" @click="showDetails(product)">Edit</button>-->
+          <i class="fa fa-user-plus"></i>
+        </td>
 
       </tr>
       </tbody>
     </table>
 
     <div class="jumbotron jumbotron-fluid" v-if="productList.length == 0">
-      <div class="container">
+      <div class="container">categoryId
         <h1 class="display-4">No Products Present</h1>
         <p class="lead">Currently there are no products, Add new products using Bulk upload or  Single upload</p>
       </div>
@@ -109,14 +106,29 @@
 
 <style>
   #row-element:hover {
-    background-color: aqua;
+    background-color: #cccccc;
   }
 
   #inlineFormInputName {
     margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  #inlineFormInputName:active{
+    border-color: #272C33;
   }
 
   .table {
     margin-top: 10px;
   }
+
+  #edit{
+    color: #777777;
+  }
+
+  #edit:hover{
+    color: #272C33;
+    cursor: pointer;
+  }
+
+
 </style>

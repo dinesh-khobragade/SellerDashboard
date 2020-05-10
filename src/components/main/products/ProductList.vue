@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid" >
+  <div class="container" >
+    <h1>Products</h1>
     <div class="row" id="productActions">
       <div class="col-6">
         <div class="custom-file" >
@@ -149,10 +150,11 @@
     padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    border: #1D1919;
+    border: #272C33;
     width: 100%;
-    color: #dddddd;
-    background-color: #1D1919;
+    color: white;
+    font-family: Ubuntu;
+    background-color: #272C33;
   }
 
   button:hover {
@@ -175,5 +177,11 @@
     margin-right: 20px;
    }
 
+  h1{
+    margin-top: 25px;
+    font-family: Ubuntu;
+    margin-bottom: 25px;
+    padding-left: 10px;
+  }
 
 </style>
