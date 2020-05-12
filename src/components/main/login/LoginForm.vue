@@ -47,7 +47,7 @@
         });
         if (response.data.resultCode === 100) {
           console.log(response.data.data)
-          // location.href = '/home'
+          location.href = '/main'
         } else {
           console.log(response.data.error)
           alert(response.data.error)

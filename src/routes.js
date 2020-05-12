@@ -6,18 +6,32 @@ import ProductDetailsComponent from "./components/main/products/ProductDetailsCo
 import LoginComponent from "./components/main/login/LoginComponent";
 import RegisterUserForm from "./components/main/login/RegisterUserForm";
 import LoginForm from "./components/main/login/LoginForm";
+import SignupComponent from "./components/main/login/SignupComponent";
+import MainContent from "./components/MainContent";
 
-export const routes =  [
-  { path : '' , component:Home},
-  { path : '/orders' , component:OrderList},
-  { path : '/products' , component:ProductList},
-  { path : '/finance' , component:FinanceMainComponent},
-  { path : '/signup' , component:RegisterUserForm},
-  { path : '/login' , component:LoginForm},
-  { path : '/productDetails' ,
-    component:ProductDetailsComponent ,
-    name : 'productDetails' ,
-    props: (route) => ({
-      ...route.params
-    })}
+export const routes = [
+  {
+    path: '/login', component: LoginComponent,
+    children: [
+      {path: '/', component: LoginForm},
+      {path: '/signup', component: RegisterUserForm}
+    ]
+  },
+  {
+    path: '/main', component: MainContent,
+    children: [
+      {path: '/main', component: Home},
+      {path: '/orders', component: OrderList},
+      {path: '/products', component: ProductList},
+      {path: '/finance', component: FinanceMainComponent},
+      {
+        path: '/productDetails',
+        component: ProductDetailsComponent,
+        name: 'productDetails',
+        props: (route) => ({
+          ...route.params
+        })
+      }
+    ]
+  }
 ]

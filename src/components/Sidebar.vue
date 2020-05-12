@@ -5,7 +5,7 @@
       <div class="p-4 pt-5">
         <ul class="nav navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/#"><i class="fa fa-home"></i>
+            <a class="nav-link" href="/main"><i class="fa fa-home"></i>
               Home </a>
           </li>
           <li class="nav-item">
@@ -21,7 +21,7 @@
                 Finance</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/orders"><i class="fa fa-user-plus"></i>
+            <a class="nav-link" href="/login"><i class="fa fa-user-plus"></i>
                 Sign out</a>
           </li>
         </ul>

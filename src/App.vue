@@ -10,7 +10,7 @@
       </div>
   </div>-->
 
-  <app-login></app-login>
+  <router-view ></router-view>
 
 </template>
 

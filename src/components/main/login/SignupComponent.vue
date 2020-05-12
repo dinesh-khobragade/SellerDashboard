@@ -2,7 +2,7 @@
   <div id="">
     <div class="" id="centerContainer">
         <div id="block">
-          <router-view></router-view>
+          <app-registration-form></app-registration-form>
         </div>
       </div>
   </div>
@@ -11,7 +11,7 @@
 
 <script>
 
-  import LoginForm from "./LoginForm";
+  import RegisterUserForm from "./RegisterUserForm";
 
   export default {
     data() {
@@ -21,7 +21,7 @@
       }
     },
     components:{
-      appLoginForm:LoginForm
+      appRegistrationForm:RegisterUserForm
     }
   }
 </script>
