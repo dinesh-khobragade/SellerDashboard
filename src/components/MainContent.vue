@@ -25,7 +25,15 @@
       appSidebar : Sidebar,
       appContent : Content,
       appLogin:LoginComponent
+    },
+
+    created() {
+      console.log(this.$session);
+      if(!this.$session.get('token')){
+        this.$router.push("/login")
+      }
     }
+
   }
 </script>
 

@@ -36,22 +36,30 @@
       textarea: null,
       autogrow: null,
       disabled: null,
-      username:'',
-      password:''
+      username: '',
+      password: ''
     }),
-    methods:{
-      async loginUser(){
+    methods: {
+      async loginUser() {
         const response = await axios.post('http://city-ecomm-customer.herokuapp.com/businessUser/login', {
-          "username":this.username,
-          "password":this.password
+          "username": this.username,
+          "password": this.password
         });
         if (response.data.resultCode === 100) {
           console.log(response.data.data)
-          location.href = '/main'
+          await this.saveSession(response.data.data);
+          this.$router.push("/")
         } else {
           console.log(response.data.error)
           alert(response.data.error)
         }
+      },
+
+      async saveSession(data) {
+        this.$session.start()
+        await this.$session.set('token', data.token)
+        await this.$session.set('user', data)
+        // Vue.http.headers.common['Authorization'] = 'Bearer ' + data.token
       }
     }
   }
@@ -59,16 +67,16 @@
 
 <style scoped>
 
-  .container{
+  .container {
     padding: 50px;
   }
 
-  md-input{
+  md-input {
     margin: 100px;
   }
 
-  h2{
-    color:#53657D ;
+  h2 {
+    color: #53657D;
     margin-bottom: 30px;
     font-family: Ubuntu;
     display: flex;
@@ -76,15 +84,15 @@
     align-items: center;
   }
 
-  button{
+  button {
     margin-top: 20px;
     width: 100%;
     border-color: white;
     background-color: #53657D;
   }
 
-  p{
-    color:#53657D ;
+  p {
+    color: #53657D;
     margin-top: 30px;
     font-family: Ubuntu;
     display: flex;
@@ -92,7 +100,7 @@
     align-items: center;
   }
 
-  a{
+  a {
     padding-left: 10px;
     padding-right: 10px;
   }

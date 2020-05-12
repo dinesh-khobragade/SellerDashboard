@@ -18,9 +18,9 @@ export const routes = [
     ]
   },
   {
-    path: '/main', component: MainContent,
+    path: '/', component: MainContent,
     children: [
-      {path: '/main', component: Home},
+      {path: '/', component: Home},
       {path: '/orders', component: OrderList},
       {path: '/products', component: ProductList},
       {path: '/finance', component: FinanceMainComponent},

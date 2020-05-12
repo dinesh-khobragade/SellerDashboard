@@ -7,8 +7,11 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import VueSession from 'vue-session'
 
-
+Vue.use(VueSession,{
+  persist: true
+})
 Vue.use(VueMaterial)
 Vue.use(VueRouter);
 Vue.use(VModal,{ dialog: true })
