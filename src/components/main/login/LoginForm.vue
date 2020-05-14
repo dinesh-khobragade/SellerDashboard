@@ -23,7 +23,8 @@
 
 <script>
 
-  import axios from "axios";
+
+  import Vue from "vue";
 
   export default {
     name: 'TextFields',
@@ -41,14 +42,16 @@
     }),
     methods: {
       async loginUser() {
-        const response = await axios.post('http://city-ecomm-customer.herokuapp.com/businessUser/login', {
+        const response = await Vue.axios.post('/businessUser/login', {
           "username": this.username,
           "password": this.password
         });
         if (response.data.resultCode === 100) {
           console.log(response.data.data)
           await this.saveSession(response.data.data);
-          this.$router.push("/")
+          console.log("Saved")
+          location.href = "/"
+          // await this.$router.push("/")
         } else {
           console.log(response.data.error)
           alert(response.data.error)
@@ -59,7 +62,7 @@
         this.$session.start()
         await this.$session.set('token', data.token)
         await this.$session.set('user', data)
-        // Vue.http.headers.common['Authorization'] = 'Bearer ' + data.token
+        console.log("Token = " + Vue.prototype.$session.get('token'))
       }
     }
   }

@@ -27,7 +27,7 @@
         <td>{{product.discount}}</td>
         <td>{{product.sku}}</td>
         <td scope="row" id="edit" @click="showDetails(product)">
-<!--          <button type="button" class="btn btn-outline-primary" @click="showDetails(product)">Edit</button>-->
+          <!--          <button type="button" class="btn btn-outline-primary" @click="showDetails(product)">Edit</button>-->
           <i class="fa fa-user-plus"></i>
         </td>
 
@@ -36,7 +36,7 @@
     </table>
 
     <div class="jumbotron jumbotron-fluid" v-if="productList.length == 0">
-      <div class="container">categoryId
+      <div class="container">
         <h1 class="display-4">No Products Present</h1>
         <p class="lead">Currently there are no products, Add new products using Bulk upload or  Single upload</p>
       </div>
@@ -62,13 +62,13 @@
 
 
       async getProductsFromApi() {
-        const response = await axios.get('http://city-ecomm-customer.herokuapp.com/product/getProductsForSeller?sellerId=5');
+        const response = await Vue.axios.get('/product/getProductsForSeller?sellerId=5');
         console.log(response);
         if (response.data.resultCode === 100) {
           this.productList = response.data.data;
-        } else {
-          alert(response.error)
-        }
+        } /*else {
+          alert(response.data.error)
+        }*/
       }
     },
 

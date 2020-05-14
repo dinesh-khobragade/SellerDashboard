@@ -13,7 +13,7 @@
       <div class="col-3 text-center">
         <button type="button" id="buttonDownloadFile" class="btn btn-primary btn-sm" @click="downloadCsv()">
 
-          <a href="https://dinotest2k18.s3.ap-south-1.amazonaws.com/products.csv" download="proposed_file_name">Download Sample CSV file</a>
+          <a id="anchor" href="https://dinotest2k18.s3.ap-south-1.amazonaws.com/products.csv" download="proposed_file_name">Download Sample CSV file</a>
 
         </button>
       </div>
@@ -176,6 +176,10 @@
     margin-left: 0px;
     margin-right: 20px;
    }
+
+  #anchor{
+    color: white;
+  }
 
   h1{
     margin-top: 25px;

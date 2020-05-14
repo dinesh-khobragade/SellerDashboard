@@ -27,7 +27,7 @@
       appLogin:LoginComponent
     },
 
-    created() {
+    beforeCreate() {
       console.log(this.$session);
       if(!this.$session.get('token')){
         this.$router.push("/login")

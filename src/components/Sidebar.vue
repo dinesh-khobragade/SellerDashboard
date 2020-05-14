@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h2 id="heading">Nearby Rush</h2>
+    <h2 id="heading"><a id="headingAnchor" href="/">Nearby Rush</a></h2>
     <nav id="sidebar">
       <div class="p-4 pt-5">
         <ul class="nav navbar-nav">
@@ -34,10 +34,12 @@
   export default {
     methods: {
       signOut(){
-        console.log(this.$session.get('token'));
-        console.log(this.$session.get('user'));
-        this.$session.clear();
-        this.$router.push("/login")
+        if(confirm("Are you sure you want to sign out?")){
+          console.log(this.$session.get('token'));
+          console.log(this.$session.get('user'));
+          this.$session.clear();
+          this.$router.push("/login")
+        }
       }
     }
   }
@@ -112,7 +114,14 @@
     border-bottom: 1px solid rgba(255, 255, 255, .1);
     margin-left: 10px;
     margin-right: 10px;
+  }
 
+  #headingAnchor{
+    color: white;
+  }
+
+  #headingAnchor:hover{
+    text-decoration: none;
   }
 
 
