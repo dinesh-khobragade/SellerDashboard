@@ -8,6 +8,7 @@ import RegisterUserForm from "./components/main/login/RegisterUserForm";
 import LoginForm from "./components/main/login/LoginForm";
 import SignupComponent from "./components/main/login/SignupComponent";
 import MainContent from "./components/MainContent";
+import AddCategories from "./components/main/categories/AddCategories";
 
 export const routes = [
   {
@@ -24,6 +25,7 @@ export const routes = [
       {path: '/orders', component: OrderList},
       {path: '/products', component: ProductList},
       {path: '/finance', component: FinanceMainComponent},
+      {path: '/addCategories', component: AddCategories},
       {
         path: '/productDetails',
         component: ProductDetailsComponent,

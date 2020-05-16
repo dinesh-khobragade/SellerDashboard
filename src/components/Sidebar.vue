@@ -20,7 +20,11 @@
             <a class="nav-link" href="/finance"><i class="fa fa-user-plus"></i>
               Finance</a>
           </li>
-          <li class="nav-item"  @click="signOut">
+          <li class="nav-item" v-if="this.$session.get('user').businessUserId === 5">
+            <a class="nav-link" href="/addCategories"><i class="fa fa-user-plus"></i>
+              Add categories</a>
+          </li>
+          <li class="nav-item" @click="signOut">
             <a class="nav-link" href="/login"><i class="fa fa-user-plus"></i>
               Sign out</a>
           </li>
@@ -33,8 +37,8 @@
 <script>
   export default {
     methods: {
-      signOut(){
-        if(confirm("Are you sure you want to sign out?")){
+      signOut() {
+        if (confirm("Are you sure you want to sign out?")) {
           console.log(this.$session.get('token'));
           console.log(this.$session.get('user'));
           this.$session.clear();
@@ -116,11 +120,11 @@
     margin-right: 10px;
   }
 
-  #headingAnchor{
+  #headingAnchor {
     color: white;
   }
 
-  #headingAnchor:hover{
+  #headingAnchor:hover {
     text-decoration: none;
   }
 
