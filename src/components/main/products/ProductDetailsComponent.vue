@@ -78,6 +78,44 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="sizes">Select size if applicable (press cntrl to select multiple)</label>
+            <select multiple class="form-control" id="sizes" v-model="selectedSizes" @change="setSize($event)">
+              <option value="" selected>Select size if applicable</option>
+              <option>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="colorVariations">Select number of color variations</label>
+              <select class="form-control" id="colorVariations" @change="setColorVariations($event)">
+                <option value="0" selected>Select number of color variations</option>
+                <option v-for="index in 10">{{index}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col"  v-for="index in 10">
+          <div class="form-group" v-if="index <= numberOfColorVariations">
+            <label for="colors">Select color {{index}}</label>
+            <input type="color" id="colors"  value="#ff0000"  @change="setColors($event , index)"><br><br>
+          </div>
+        </div>
+      </div>
+
       <input ref="file" id="fileUpload" type="file" v-on:change="uploadImage()" hidden>
       <button type="button" @click="chooseFiles()">Upload product image</button>
 
@@ -98,6 +136,7 @@
   export default {
 
     created() {
+      console.log(this.product)
       this.getCategoriesList();
     },
 
@@ -105,15 +144,39 @@
     data() {
       return {
         product: this.productDetail,
-        categories:[]
+        categories: [],
+        numberOfColorVariations: 0,
+        selectedSizes: [],
+        selectedColors:[]
       }
     },
 
     methods: {
 
-      setCategory(event){
+
+      setCategory(event) {
         console.log(event.target.value)
         this.product.categoryId = event.target.value
+      },
+
+      setSize(event) {
+        console.log(event.target.value)
+        console.log(this.selectedSizes)
+        // this.product.categoryId = event.target.value
+      },
+
+      setColorVariations(event) {
+        console.log(event.target.value)
+        this.numberOfColorVariations = event.target.value
+      },
+
+      setColors(event , index) {
+        console.log(event.target.value)
+        this.selectedColors[index-1] = event.target.value
+
+        console.log(this.selectedColors.filter(value => {
+          return value
+        }))
       },
 
       getFinalPrice() {
@@ -122,7 +185,12 @@
 
       async updateProduct() {
         this.product.supplierId = this.$session.get('user').businessUserId;
-        const response = await axios.post('http://city-ecomm-customer.herokuapp.com/product/updateProduct', this.product);
+        this.product.sizes = this.selectedSizes;
+        this.product.colors = this.selectedColors.filter(value => {
+          return value
+        })
+        console.log(this.product)
+       /* const response = await axios.post('http://city-ecomm-customer.herokuapp.com/product/updateProduct', this.product);
         if (response.data.resultCode === 100) {
           console.log(response.data);
           if (confirm("Product updated successfully")) {
@@ -131,10 +199,10 @@
         } else {
           alert(response.data.error)
           console.log(response.data.error);
-        }
+        }*/
       },
 
-  async getCategoriesList() {
+      async getCategoriesList() {
         const response = await axios.get(`http://city-ecomm-customer.herokuapp.com/category/getCategoriesForBusiness?businessType=${this.$session.get('user').businessType}`);
         if (response.data.resultCode === 100) {
           console.log(response.data);
@@ -153,10 +221,10 @@
         console.log("test")
         console.log(this.$refs.file.files[0])
         let file = this.$refs.file.files[0]
-        await this.uploadFileToS3(file , this.product)
+        await this.uploadFileToS3(file, this.product)
       },
 
-      async uploadFileToS3(file , product) {
+      async uploadFileToS3(file, product) {
         let bucketRegion = "ap-south-1";
         let IdentityPoolId = "ap-south-1:cccdac2e-bfb0-44eb-810c-fa791e5cd3f0";
 
