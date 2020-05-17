@@ -1,33 +1,29 @@
 <template>
-  <div class="container" >
-    <h1>Products</h1>
-    <div class="row" id="productActions">
-      <div class="col-6">
-        <div class="custom-file" >
-          <input type="file" id="files" ref="files" class="custom-file-input  btn-primary btn-sm"
-                 aria-describedby="inputGroupFileAddon01" v-on:change="bulkUploadProducts()">
-          <label class="custom-file-label  btn-primary btn-lg" id="uploadFile" for="files">Choose file to upload products</label>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col"><h1>Products</h1></div>
+      <div class="col">
+        <div class="row d-flex flex-row-reverse" id="productActions">
+          <div class="col-4">
+            <div class="custom-file">
+              <input ref="files" id="files" type="file" v-on:change="bulkUploadProducts" hidden>
+              <button class="btn btn-primary btn-sm" @click="chooseFiles()">Upload products CSV</button>
+
+            </div>
+          </div>
+
+          <div class="col-4 text-center">
+            <button type="button" id="buttonDownloadFile" class="btn btn-primary btn-sm">
+
+              <a id="anchor" href="https://dinotest2k18.s3.ap-south-1.amazonaws.com/products.csv"
+                 download="proposed_file_name">Download Sample CSV file</a>
+
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="col-3 text-center">
-        <button type="button" id="buttonDownloadFile" class="btn btn-primary btn-sm" @click="downloadCsv()">
-
-          <a id="anchor" href="https://dinotest2k18.s3.ap-south-1.amazonaws.com/products.csv" download="proposed_file_name">Download Sample CSV file</a>
-
-        </button>
-      </div>
-
-      <div class="col-3 text-center" id="buttonAddProducts">
-        <button type="button" class="btn btn-primary btn-sm">Add Product</button>
-      </div>
-
     </div>
-
     <app-products-list-table></app-products-list-table>
-
-
-    <v-dialog/>
 
 
   </div>
@@ -52,9 +48,10 @@
 
     methods: {
 
-      downloadCsv() {
-
+      chooseFiles() {
+        document.getElementById("fileUpload").click()
       },
+
 
       showErrorDialog(message) {
         this.$modal.show('dialog', {
@@ -146,10 +143,8 @@
 <style scoped>
 
   button {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-top: 25px;
+    padding: 10px;
     border: #272C33;
     width: 100%;
     color: white;
@@ -161,10 +156,17 @@
     background-color: grey;
   }
 
-  a { color: #dddddd; } /* CSS link color (red) */
-  a:hover { color: #dddddd;
+  a {
+    color: #dddddd;
+  }
+
+  /* CSS link color (red) */
+  a:hover {
+    color: #dddddd;
     text-decoration: none;
-  } /* CSS link hover (green) */
+  }
+
+  /* CSS link hover (green) */
 
   #uploadFile {
     box-shadow: none;
@@ -172,16 +174,16 @@
     border-color: #1D1919;
   }
 
-  #productActions{
+  #productActions {
     margin-left: 0px;
     margin-right: 20px;
-   }
+  }
 
-  #anchor{
+  #anchor {
     color: white;
   }
 
-  h1{
+  h1 {
     margin-top: 25px;
     font-family: Ubuntu;
     margin-bottom: 25px;
