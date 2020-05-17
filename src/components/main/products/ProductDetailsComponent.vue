@@ -105,6 +105,12 @@
             </div>
           </div>
         </div>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="isProductActive" v-model="product.isActive">
+          <label class="form-check-label" for="isProductActive">Is product active?</label>
+        </div>
+
       </div>
 
       <div class="row">
@@ -189,8 +195,8 @@
         this.product.colors = this.selectedColors.filter(value => {
           return value
         })
-        console.log(this.product)
-       /* const response = await axios.post('http://city-ecomm-customer.herokuapp.com/product/updateProduct', this.product);
+        console.log(JSON.stringify(this.product))
+       const response = await axios.post('http://city-ecomm-customer.herokuapp.com/product/updateProduct', this.product);
         if (response.data.resultCode === 100) {
           console.log(response.data);
           if (confirm("Product updated successfully")) {
@@ -199,7 +205,7 @@
         } else {
           alert(response.data.error)
           console.log(response.data.error);
-        }*/
+        }
       },
 
       async getCategoriesList() {
