@@ -9,6 +9,7 @@ import LoginForm from "./components/main/login/LoginForm";
 import SignupComponent from "./components/main/login/SignupComponent";
 import MainContent from "./components/MainContent";
 import AddCategories from "./components/main/categories/AddCategories";
+import AddProductComponent from "./components/main/products/AddProductComponent";
 
 export const routes = [
   {
@@ -28,7 +29,7 @@ export const routes = [
       {path: '/addCategories', component: AddCategories},
       {
         path: '/productDetails',
-        component: ProductDetailsComponent,
+        component: AddProductComponent,
         name: 'productDetails',
         props: (route) => ({
           ...route.params

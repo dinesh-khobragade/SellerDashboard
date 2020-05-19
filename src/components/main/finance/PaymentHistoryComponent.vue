@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h4>Payment History</h4>
-    <table class="table">
+    <h5 style="margin-top: 30px ; font-family: Ubuntu">Payment History</h5>
+    <table class="table table-sm">
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Transaction ID</th>
@@ -10,10 +10,10 @@
       </tr>
       <tbody v-for="(payment, index) in payments">
       <tr id="row-element">
-        <td><b>{{payment.dateTime}}</b></td>
-        <td><b>{{payment.transactionId}}</b></td>
-        <td><b>{{payment.amount}}</b></td>
-        <td><b>Setteled</b></td>
+        <td>{{payment.dateTime}}</td>
+        <td>#{{payment.transactionId}}</td>
+        <td>₹{{payment.amount}}</td>
+        <td>Setteled</td>
       </tr>
       </tbody>
     </table>
@@ -61,7 +61,12 @@
   }
 
   td{
+    font-family: "Ubuntu Light";
     text-align: left;
+  }
+
+  tr:hover{
+    background-color: #cfcfcf;
   }
 
   th{

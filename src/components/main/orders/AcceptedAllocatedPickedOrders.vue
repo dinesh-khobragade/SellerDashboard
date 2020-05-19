@@ -18,7 +18,7 @@
         <td scope="row">{{order.orderId}}</td>
         <td>{{order.productName}}</td>
         <td>{{order.quantity}}</td>
-        <td>{{100}}</td>
+        <td>₹{{order.finalPrice}}</td>
         <td>{{order.categoryName}}</td>
         <td>{{order.sku}}</td>
         <td v-bind:class="{  green : order.orderStateId == 4,
@@ -47,14 +47,18 @@
     margin-bottom: 30px;
   }
 
-  tr{
+  td {
+    font-size: 12px;
     color: #555555;
   }
 
-  td{
-    color: #777777;
-    font-family: Ubuntu;
+  th {
+    color: black;
+    font-size: 14px;
+    font-family: "Roboto";
   }
+
+
 
   tr:hover{
     background-color: #cccccc;

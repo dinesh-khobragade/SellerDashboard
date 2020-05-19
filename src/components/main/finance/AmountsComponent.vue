@@ -2,27 +2,27 @@
   <div id="container" class="container-fluid">
     <div class="row">
       <div class="col-2" id="blueBlock">
-        <div><h2>{{entireEarnings}}</h2></div>
+        <div><h2>₹{{entireEarnings}}</h2></div>
         <div><h5>Overall Earned</h5></div>
       </div>
 
       <div class="col-2" id="redBlock">
-        <div><h2>{{todaysEarnings}}</h2></div>
+        <div><h2>₹{{todaysEarnings}}</h2></div>
         <div><h5>Today's </h5></div>
       </div>
 
       <div class="col-2" id="orangeBlock">
-        <div><h2>{{yesterdaysEarnings}}</h2></div>
+        <div><h2>₹{{yesterdaysEarnings}}</h2></div>
         <div><h5>Yesterday's</h5></div>
       </div>
 
       <div class="col-2" id="greenBlock">
-        <div><h2>{{thisMonthEarnings}}</h2></div>
+        <div><h2>₹{{thisMonthEarnings}}</h2></div>
         <div><h5>This Month</h5></div>
       </div>
 
       <div class="col-2" id="yellowBlock">
-        <div><h2>{{lastMonthEarnings}}</h2></div>
+        <div><h2>₹{{lastMonthEarnings}}</h2></div>
         <div><h5>Last Month</h5></div>
       </div>
 
@@ -122,7 +122,7 @@
   h2 {
     color: #FFFFFF;
     /*font-size: 50px;*/
-    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+    font-family: Roboto, 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   }
 
@@ -133,7 +133,7 @@
   }
 
   #greenBlock {
-    margin: 10px;
+    margin: auto;
     padding: 20px;
     text-align: center;
 
@@ -141,7 +141,7 @@
   }
 
   #redBlock {
-    margin: 10px;
+    margin: auto;
     padding: 20px;
     text-align: center;
 
@@ -149,21 +149,21 @@
   }
 
   #orangeBlock {
-    margin: 10px;
+    margin: auto;
     padding: 20px;
     text-align: center;
     background-color: #ff8f00
   }
 
   #blueBlock {
-    margin: 10px;
+    margin: auto;
     padding: 20px;
     text-align: center;
     background-color: #448aff
   }
 
   #yellowBlock {
-    margin: 10px;
+    margin: auto;
     padding: 20px;
     text-align: center;
     background-color: #272C33;

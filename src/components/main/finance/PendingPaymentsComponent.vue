@@ -2,14 +2,14 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-7"><h3>Requested payments amount: </h3></div>
-      <div class="col-2"><h3>{{requestedPaymentsAmount}} </h3></div>
+      <div class="col-5"><h3 style="font-family: Ubuntu ; color: #777777">Requested payments amount: </h3></div>
+      <div class="col-2"><h3 >₹{{requestedPaymentsAmount}} </h3></div>
     </div>
 
     <div class="row">
-      <div class="col-7"><h3>Pending payments amount: </h3></div>
+      <div class="col-5"><h3 style="font-family: Ubuntu ; color: #777777">Pending payments amount: </h3></div>
       <div class="col-2">
-        <div><h3>{{pendingPaymentsAmount}} </h3></div>
+        <div><h3>₹{{pendingPaymentsAmount}} </h3></div>
       </div>
       <div class="col-2">
         <button type="button" class="btn btn-primary btn-sm" @click="requestPayout()" v-if="this.pendingPaymentsAmount>0">Request Payment</button>
@@ -31,8 +31,8 @@
 
     data() {
       return {
-        requestedPaymentsAmount: 100,
-        pendingPaymentsAmount: 1000
+        requestedPaymentsAmount: '',
+        pendingPaymentsAmount: ''
       }
     },
 
@@ -81,10 +81,13 @@
 <style scoped>
 
   .container{
-    margin-top: 100px;
+    margin-top: 50px;
+    border: dashed #555555;
   }
 
   .row{
+    margin-left: 20px;
+    margin-bottom: 20px;
     margin-top: 20px;
   }
 

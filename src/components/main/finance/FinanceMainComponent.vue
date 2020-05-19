@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <h1>Finance Main</h1>
+  <h1 style="margin-top: 25px ; margin-bottom: 25px">Payments summary</h1>
   <app-amounts></app-amounts>
   <app-pending-payments></app-pending-payments>
   <app-payment-history></app-payment-history>
