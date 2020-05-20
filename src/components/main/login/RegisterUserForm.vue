@@ -31,7 +31,22 @@
         <md-input type="password" v-model="businessUser.password" placeholder="Enter password"></md-input>
       </md-field>
 
-      <button type="button" @click="registerUser"  class="btn btn-primary">Register</button>
+      <md-field >
+        <label>Enter Latitude, Longitude</label>
+        <md-input type="location" v-model="latLong" placeholder="Enter Latitude Longitude" @focus="setLatLong"></md-input>
+      </md-field>
+      <small>Hint: Use google map to fetch the exact latitude, longitude<a href="http://maps.google.com"> map</a> </small>
+
+
+      <md-field>
+        <label for="businessType">Business type</label>
+        <md-select v-model="businessUser.businessType" name="Business Type" id="businessType">
+          <md-option value="1">Shop</md-option>
+          <md-option value="2">Hotel</md-option>
+        </md-select>
+      </md-field>
+
+      <button type="button" @click="registerUser" class="btn btn-primary">Register</button>
     </form>
 
     <p>Alread a member yet? <a href="\login">Sign In</a></p>
@@ -44,7 +59,7 @@
   import axios from "axios";
 
   export default {
-    name: 'TextFields',
+
     data: () => ({
       initial: 'Initial Value',
       type: null,
@@ -54,22 +69,53 @@
       textarea: null,
       autogrow: null,
       disabled: null,
-      businessUser:{
-        latLong:"18,72"
+      latLong:'',
+      businessUser: {
+
       },
     }),
 
-    methods:{
-      async registerUser(){
+    methods: {
+      async setLatLong(){
+        let result = await this.getLocation();
+        if (result) {
+          this.latLong = result.coords.latitude + " , " + result.coords.longitude
+          console.log(this.businessUser)
+        }
+      },
+
+      async registerUser() {
+        this.businessUser.latLong = this.latLong;
+        console.log(this.businessUser)
         const response = await axios.post('http://city-ecomm-customer.herokuapp.com/businessUser/registerUser', this.businessUser);
         if (response.data.resultCode === 100) {
           console.log(response.data.data)
-          location.href = '/login'
+          if(confirm("Business registered successfully. Please login"))
+            location.href = '/login'
         } else {
           alert(response.data.error);
           console.log(response.data.error)
         }
+      },
+
+      async getLocation() {
+        return new Promise((resolve, reject) => {
+          if (!("geolocation" in navigator)) {
+            console.log("location not available")
+            reject("");
+          }
+
+          navigator.geolocation.getCurrentPosition(pos => {
+            console.log("location available")
+            resolve(pos);
+          }, err => {
+            reject("");
+          });
+
+        });
       }
+
+
     }
   }
 </script>

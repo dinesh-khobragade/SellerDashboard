@@ -47,10 +47,10 @@
     data(){
       return {
         entireEarnings:'',
-        todaysEarnings:'100',
-        yesterdaysEarnings:'1000',
-        thisMonthEarnings:'100000',
-        lastMonthEarnings:'123121',
+        todaysEarnings:'',
+        yesterdaysEarnings:'',
+        thisMonthEarnings:'',
+        lastMonthEarnings:'',
 
       }
     },

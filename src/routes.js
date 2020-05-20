@@ -10,6 +10,7 @@ import SignupComponent from "./components/main/login/SignupComponent";
 import MainContent from "./components/MainContent";
 import AddCategories from "./components/main/categories/AddCategories";
 import AddProductComponent from "./components/main/products/AddProductComponent";
+import ProfileComponent from "./components/main/profile/ProfileComponent";
 
 export const routes = [
   {
@@ -26,6 +27,7 @@ export const routes = [
       {path: '/orders', component: OrderList},
       {path: '/products', component: ProductList},
       {path: '/finance', component: FinanceMainComponent},
+      {path: '/profile', component: ProfileComponent},
       {path: '/addCategories', component: AddCategories},
       {
         path: '/productDetails',

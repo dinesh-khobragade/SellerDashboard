@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="this.payments && this.payments.length > 0 ">
     <h5 style="margin-top: 30px ; font-family: Ubuntu">Payment History</h5>
     <table class="table table-sm">
       <tr>

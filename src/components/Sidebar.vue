@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h2 id="heading"><a id="headingAnchor" href="/">Nearby Rush</a></h2>
+    <h2 id="heading"><a id="headingAnchor" href="/"><img src="nearbyrush.png"></img></a></h2>
     <nav id="sidebar">
       <div class="p-4 pt-5">
         <ul class="nav navbar-nav">
@@ -9,23 +9,25 @@
               Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/orders"><i class="fa fa-user-plus"></i>Orders</a>
+            <a class="nav-link" href="/orders"><i class="fas fa-shipping-fast" style="margin-right: 20px"></i>Orders</a>
           </li>
           <li>
           <li class="nav-item">
-            <a class="nav-link" href="/products"><i class="fa fa-user-plus"></i>
-              Products</a>
+            <a class="nav-link" href="/products"><i class="fas fa-tshirt" style="margin-right: 20px"></i>Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/finance"><i class="fa fa-user-plus"></i>
+            <a class="nav-link" href="/finance"><i class="fas fa-rupee-sign" style="margin-right: 20px"></i>
               Finance</a>
           </li>
           <li class="nav-item" v-if="this.$session.get('user').businessUserId === 5">
-            <a class="nav-link" href="/addCategories"><i class="fa fa-user-plus"></i>
-              Add categories</a>
+            <a class="nav-link" href="/addCategories"><i class="fas fa-stream" style="margin-right: 20px"></i>Category</a>
+          </li>
+          <li class="nav-item" @click="Profile">
+            <a class="nav-link" href="/profile"><i class="fa fa-user-plus"></i>
+              Profile</a>
           </li>
           <li class="nav-item" @click="signOut">
-            <a class="nav-link" href="/login"><i class="fa fa-user-plus"></i>
+            <a class="nav-link" href="/login"><i class="fas fa-sign-out-alt" style="margin-right: 20px"></i>
               Sign out</a>
           </li>
         </ul>
@@ -103,6 +105,10 @@
   }
 
   .fa-user-plus {
+    margin-right: 20px;
+  }
+
+  .fas{
     margin-right: 20px;
   }
 

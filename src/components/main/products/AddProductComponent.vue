@@ -176,8 +176,8 @@
     created() {
       console.log(this.product)
       this.getCategoriesList();
-      this.selectedSizes = this.product.sizes
-      this.selectedColors = this.product.colors;
+      this.selectedSizes = this.product.sizes?this.product.sizes:[]
+      this.selectedColors = this.product.colors?this.product.colors:[];
     },
 
     props: ['productDetail'],

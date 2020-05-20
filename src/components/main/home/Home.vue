@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <app-counts-component :productsCount="this.productsCount"
                           :activeOrders="this.activeOrders"
+                          :totalEarned="this.totalEarned"
                           :pendingOrders="this.pendingApproval"></app-counts-component>
     <app-top-selling-component :products="this.topSellingProducts"
                                v-if="this.topSellingProducts.length >0"></app-top-selling-component>
@@ -29,6 +30,7 @@
       this.getPendingApprovalCount();
       this.getAllTrendingProducts();
       this.getAllTrendingProductsForSeller();
+      this.getOverallEarned();
 
     },
 
@@ -46,37 +48,37 @@
     components: {
       appCountsComponent: HomeCountsComponent,
       appTopSellingComponent: HomeTopSellingComponent,
-      appTrendingComponent: HomeTrendingComponent
+      appTrendingComponent: HomeTrendingComponent,
     },
     methods: {
       async getProductsCount() {
         const response = await Vue.axios.get('/dashboard/getProductsCount?sellerId=2');
         this.productsCount = response.data.data
-        console.log(response)
       },
 
       async getActiveOrdersCount() {
         const response = await Vue.axios.get('/dashboard/getActiveOrdersCount?sellerId=2');
         this.activeOrders = response.data.data
-        console.log(response)
       },
 
       async getPendingApprovalCount() {
         const response = await Vue.axios.get('/dashboard/getPendingOrdersCount?sellerId=5');
         this.pendingApproval = response.data.data
-        console.log(response)
       },
 
       async getAllTrendingProducts() {
-        const response = await Vue.axios.get('/dashboard/getAllTrendingProducts');
+        const response = await Vue.axios.get(`/dashboard/getAllTrendingProducts?businessType=${this.$session.get('user').businessType}`);
         this.trendingProductsList = response.data.data
-        console.log(response)
       },
 
       async getAllTrendingProductsForSeller() {
         const response = await Vue.axios.get('/dashboard/getAllTrendingProductsForSeller?sellerId=5');
         this.topSellingProducts = response.data.data
-        console.log(response)
+      },
+
+      async getOverallEarned() {
+        const response = await axios.get('/payment/getEntireEarning?');
+        this.totalEarned = response.data.data
       },
 
       sleep(milliseconds) {

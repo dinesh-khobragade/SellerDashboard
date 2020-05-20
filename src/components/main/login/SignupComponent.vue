@@ -14,12 +14,17 @@
   import RegisterUserForm from "./RegisterUserForm";
 
   export default {
+
+
+
     data() {
       return {
         // image:'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014'
         image: backgroundUrl
       }
     },
+
+
     components:{
       appRegistrationForm:RegisterUserForm
     }

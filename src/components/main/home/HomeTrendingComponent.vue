@@ -1,4 +1,4 @@
-<template>
+<template style="justify-content: center ; display: flex">
   <div class="container">
     <h4><b>Trending products in market</b></h4>
     <table class="table">
@@ -12,10 +12,10 @@
 <!--      </thead>-->
       <tbody v-for="(product, index) in trendingProduct">
       <tr id="row-element">
-        <td><b>{{product.id}}</b></td>
+        <td><b>#{{product.id}}</b></td>
         <td><b>{{product.productName}}</b></td>
         <td><b>{{product.sku}}</b></td>
-        <td><b>{{product.originalPrice}}</b></td>
+        <td><b>₹{{product.originalPrice}}</b></td>
       </tr>
       </tbody>
     </table>

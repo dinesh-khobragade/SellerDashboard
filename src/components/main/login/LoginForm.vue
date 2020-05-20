@@ -10,7 +10,7 @@
 
       <md-field>
         <label>Enter password</label>
-        <md-input v-model="password" placeholder="Enter password"></md-input>
+        <md-input v-model="password" type="password" placeholder="Enter password"></md-input>
       </md-field>
 
       <button type="button" @click="loginUser" class="btn btn-primary">Login</button>
@@ -27,7 +27,7 @@
   import Vue from "vue";
 
   export default {
-    name: 'TextFields',
+
     data: () => ({
       initial: 'Initial Value',
       type: null,
