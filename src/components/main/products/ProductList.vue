@@ -49,33 +49,9 @@
     methods: {
 
       chooseFiles() {
-        document.getElementById("fileUpload").click()
+        document.getElementById("files").click()
       },
 
-
-      showErrorDialog(message) {
-        this.$modal.show('dialog', {
-          title: 'Error',
-          text: message,
-          buttons: [
-            {
-              title: 'Close'
-            }
-          ]
-        })
-      },
-
-      showSuccessDialog(message) {
-        this.$modal.show('dialog', {
-          title: 'Success',
-          text: message,
-          buttons: [
-            {
-              title: 'Close'
-            }
-          ]
-        })
-      },
 
       async bulkUploadProducts() {
         this.productList = await this.readProducts();
@@ -92,22 +68,22 @@
 
       getSingleAddProductRequestObject(product) {
         return {
-          "categoryId": 2,
+          "categoryId": 50,
           "name": product.Name,
           "discount": parseFloat(product.Discount),
           "description": product.Description,
           "imageUrl": product.ImageUrl,
-          "supplierProductId": "123123",
+          "supplierProductId": product.Id,
           "sku": product.SKU,
           "businessType": 1,
           "isTrending": false,
           "isBestDeal": false,
-          "isActive": true,
+          "isActive": product.isActive === 1,
           "sizes": null,
           "colors": null,
           "originalPrice": parseFloat(product.Price),
-          "quantity": parseInt(product.Price),
-          "supplierId": null
+          "quantity": parseInt(product.Quantity),
+          "supplierId": this.$session.get('user').businessUserId
         }
       },
 
@@ -117,9 +93,10 @@
           products: this.getBulkAddProductRequest()
         });
         if (response.data.resultCode === 100) {
-          this.showSuccessDialog("Data uploaded successfully")
+          location.href = "/products"
+          alert("Data uploaded successfully")
         } else {
-          this.showErrorDialog(response.data.error);
+          alert(response.data.error);
         }
         console.log(response);
       },

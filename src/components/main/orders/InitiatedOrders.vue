@@ -73,6 +73,8 @@
         });
         if(response.data.resultCode === 100){
           await this.$parent.getOrdersFromAPI();
+        }else{
+          alert(response.data.error)
         }
         console.log(response)
       }

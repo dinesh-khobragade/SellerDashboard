@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h2 id="heading"><a id="headingAnchor" href="/"><img src="nearbyrush.png"></img></a></h2>
+    <h2 id="heading"><a id="headingAnchor" href="/"><img width="200px" height="200px" src="logo.png"></img></a><b> NearbyRush </b></h2>
     <nav id="sidebar">
       <div class="p-4 pt-5">
         <ul class="nav navbar-nav">
