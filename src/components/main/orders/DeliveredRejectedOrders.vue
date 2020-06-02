@@ -6,8 +6,7 @@
       <tr>
         <th scope="col">Order ID</th>
         <th scope="col">Product</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
+        <th scope="col">Final Price</th>
         <th scope="col">Customer</th>
         <th scope="col">Date & Time</th>
         <th scope="col">Order Status</th>
@@ -16,25 +15,29 @@
       <tr id="row-element" visible="false">
         <th scope="row">#{{order.orderId}}</th>
         <td>
-          <div>
-            <div>Product ID: {{order.productId}}</div>
-            <div>Name: {{order.productName}}</div>
+          <div class="container" v-for="orderDetails in order.orderDetails">
+            <div class="row" style="margin-bottom: 40px">
+              <div class="col"> <span class="label">ID:</span> <b>{{orderDetails.productId}}</b></div>
+              <div class="col-10"><span class="label">Name: </span><b>{{orderDetails.productName}}</b></div>
+              <div class="col-2"><span class="label">SKU: </span><b>{{orderDetails.sku}}</b></div>
+              <div class="col-2"><span class="label">Price: </span><b>₹{{orderDetails.finalPrice}}</b></div>
+              <div class="col-2"><span class="label">Quantity: </span><b>{{orderDetails.quantity}}</b></div>
+            </div>
           </div>
         </td>
 
-        <td>{{order.quantity}}</td>
-        <td>₹{{order.finalPrice}}</td>
+        <td>₹{{getFinalPrice(order)}}</td>
 
         <td>
           <div>
-            <div><b>{{order.customerName}}</b>,</div>
-            <div>{{order.address}},</div>
-            <div>{{order.phoneNumber}}</div>
+            <div><b>{{order.orderDetails[0].customerName}}</b>,</div>
+            <div>{{order.orderDetails[0].address}},</div>
+            <div>{{order.orderDetails[0].phoneNumber}}</div>
           </div>
         </td>
-        <td>{{order.datetime}}</td>
-        <td v-bind:class="{  green : order.orderStateId == 5,
-                             red : order.orderStateId == 6 }">{{order.orderStateName}}</td>
+        <td>{{order.orderDetails[0].datetime}}</td>
+        <td v-bind:class="{  green : order.orderDetails[0].orderStateId === 5,
+                             red : order.orderDetails[0].orderStateId === 6 }">{{order.orderDetails[0].orderStateName}}</td>
 
 
       </tr>
@@ -54,17 +57,29 @@
       }
     },
 
+    methods:{
+      getFinalPrice(order){
+        let finalPrice = 0
+        for(let index = 0 ; index < order.orderDetails.length ; ++ index){
+          finalPrice += order.orderDetails[index].finalPrice;
+          console.log(finalPrice)
+        }
+        console.log(`finalPrice = ${finalPrice}`)
+        return finalPrice
+      }
+    },
+
     computed: {
       filteredOrders() {
         let filteredOrders = this.orders.filter((order) => {
           console.log(order)
-          return order.productName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            order.categoryName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            order.sku.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            String(order.productId).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            String(order.customerName).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            String(order.phoneNumber).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            String(order.orderId).toLowerCase().includes(this.searchTerm.toLowerCase());
+          return order.orderDetails[0].productName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            order.orderDetails[0].categoryName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            order.orderDetails[0].sku.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            String(order.orderDetails[0].productId).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            String(order.orderDetails[0].customerName).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            String(order.orderDetails[0].phoneNumber).toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            String(order.orderDetails[0].orderId).toLowerCase().includes(this.searchTerm.toLowerCase());
         })
         return filteredOrders;
       }
