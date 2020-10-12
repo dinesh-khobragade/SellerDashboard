@@ -23,7 +23,7 @@ Vue.use(VueRouter);
 Vue.use(VModal,{ dialog: true })
 
 Vue.axios.defaults.baseURL = "http://city-ecomm-customer.herokuapp.com";
-// Vue.axios.defaults.baseURL = "localhost://3000";
+// Vue.axios.defaults.baseURL = "http://localhost:3000";
 
 Vue.axios.defaults.headers.common={
   "Authorization" : "Bearer "+  Vue.prototype.$session.get('token')

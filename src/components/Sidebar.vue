@@ -19,7 +19,7 @@
             <a class="nav-link" href="/finance"><i class="fas fa-rupee-sign" style="margin-right: 20px"></i>
               Finance</a>
           </li>
-          <li class="nav-item" v-if="this.$session.get('user').businessUserId === 5">
+          <li class="nav-item" >
             <a class="nav-link" href="/addCategories"><i class="fas fa-stream" style="margin-right: 20px"></i>Category</a>
           </li>
           <li class="nav-item" @click="Profile">
@@ -38,6 +38,7 @@
 
 <script>
   export default {
+
     methods: {
       signOut() {
         if (confirm("Are you sure you want to sign out?")) {
